@@ -1,40 +1,24 @@
-// state => state is an object to handle data in a component
-// Hooks => Functions, to manage state and lifecycle of a component
-// state => useState()
-
 import { useState } from "react"
 
 const TodoPage = () => {
 
-    const [counter, setCounter] = useState({counterOne: 0, counterTwo: 0})
+    const [list, setList] = useState([])
 
-    const handleIncrementOne = () => {
-        setCounter({...counter, counterOne: counter.counterOne + 1})
+    const handlePasswordGenerate = () => {
+        const string = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "a", "b", "c", "d", "e", "f"]
+        let password = ""
+        let i = 0
+        while (i < 10) {
+            let randomNumber = parseInt(Math.random() * string.length)
+            password += string[randomNumber] // a = a + b
+            i++
+        }
+        setList([...list, password])
     }
 
-    const handleDecrementOne = () => {
-        setCounter({...counter, counterOne: counter.counterOne - 1})
-    }
-
-    const handleIncrementTwo = () => {
-        setCounter({...counter, counterTwo: counter.counterTwo + 1})
-    }
-
-    const handleDecrementTwo = () => {
-        setCounter({...counter, counterTwo: counter.counterTwo - 1})
-    }
-
-    return <div style={{ display: "flex", alignItems: "center", marginTop: "20px", flexDirection: "column" }}>
-        <div>CounterOne: {counter.counterOne}</div>
-        <div>
-            <button onClick={handleIncrementOne}>Increment 1</button>
-            <button onClick={handleDecrementOne}>Decrement 1</button>
-        </div>
-        <div style={{marginTop: "50px"}}>CounterTwo: {counter.counterTwo}</div>
-        <div>
-            <button onClick={handleIncrementTwo}>Increment 2</button>
-            <button onClick={handleDecrementTwo}>Decrement 2</button>
-        </div>
+    return <div>
+        <button onClick={handlePasswordGenerate}>Generate Password</button>
+        {list.join(" , ")}
     </div>
 }
 
