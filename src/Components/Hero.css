@@ -1,0 +1,32 @@
+.hero-container{
+    position: relative;
+}
+
+.hero-container video{
+    width: 100%;
+}
+
+.hero-container div{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    text-align: center;
+    color: #fff;
+}
+
+.hero-container h5{
+    font-size: 16px;
+}
+
+.hero-container p{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.hero-container button{
+    padding: 10px;
+    padding-inline: 30px;
+    border: none;
+    margin-top: 20px;
+}

@@ -1,0 +1,26 @@
+.middle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container{
+    height: 60px;   
+}
+
+.nav-container ul{
+    list-style: none;
+    gap: 25px;
+}
+
+.nav-container .right-icons{
+    gap: 8px;
+}
+
+.learn-more .middle{
+    justify-content: center;
+    gap: 8px;
+    background-color: #111;
+    padding: 6px;
+    color: #fff;
+}
