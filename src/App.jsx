@@ -5,9 +5,9 @@ import Ecommerce from "./Pages/Ecommerce"
 
 const App = () => {
     return <Fragment>
-        {/* <TodoPage /> */}
+        <TodoPage />
         {/* <Ecommerce /> */}
-        <Bootstrap />
+        {/* <Bootstrap /> */}
     </Fragment>
 }
 

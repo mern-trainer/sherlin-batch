@@ -1,24 +1,54 @@
 import { useState } from "react"
+import { FaTrash } from "react-icons/fa"
 
 const TodoPage = () => {
 
-    const [list, setList] = useState([])
+    // task management / todo application
 
-    const handlePasswordGenerate = () => {
-        const string = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F", "a", "b", "c", "d", "e", "f"]
-        let password = ""
-        let i = 0
-        while (i < 10) {
-            let randomNumber = parseInt(Math.random() * string.length)
-            password += string[randomNumber] // a = a + b
-            i++
-        }
-        setList([...list, password])
+    const [todoList, setTodoList] = useState([])
+    const [todo, setTodo] = useState("")
+
+    const handleAddToList = () => {
+        setTodoList([todo, ...todoList])
+        setTodo("")
     }
 
-    return <div>
-        <button onClick={handlePasswordGenerate}>Generate Password</button>
-        {list.join(" , ")}
+    const removeTask = (idx) => {
+        const res = todoList.filter((item, index) => index != idx)
+        setTodoList(res)
+    }
+
+    return <div className="d-flex flex-column align-items-center mt-4">
+        <div className="w-50 d-flex flex-column gap-3">
+            <input
+                type="text"
+                value={todo}
+                onChange={(event) => setTodo(event.target.value)}
+                placeholder="Enter Task..."
+                name="task"
+                className="p-2 border-0 w-100"
+                style={{ outline: 0 }}
+            />
+            <button onClick={handleAddToList}
+                className="p-1 w-100 bg-secondary border-0 text-light"
+            >Add Task</button>
+        </div>
+        <div className="w-50 mt-1">
+            {
+                todoList.map((item, index) => {
+                    return <div key={index}
+                            className="p-2 bg-light my-2 d-flex justify-content-between"
+                        >
+                        <div className="text-truncate">
+                            {index + 1}) {item}
+                        </div>
+                        <div>
+                            <FaTrash cursor={'pointer'} onClick={() => removeTask(index)}/>
+                        </div>
+                    </div>
+                })
+            }
+        </div>
     </div>
 }
 
