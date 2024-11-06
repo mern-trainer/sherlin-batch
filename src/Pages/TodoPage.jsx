@@ -2,6 +2,7 @@ import { useState } from "react"
 import toast from "react-hot-toast"
 import { FaCheck, FaTrash } from "react-icons/fa"
 import { v4 } from "uuid"
+import TodoList from "../Components/TodoList"
 
 const TodoPage = () => {
 
@@ -58,45 +59,8 @@ const TodoPage = () => {
                 className="p-1 w-100 bg-secondary border-0 text-light"
             >Add Task</button>
         </div>
-        <h3 className="text-center mt-3">Pending Task - ({todoList.filter(item => !item.completed).length})</h3>
-        <div className="w-50 mt-1">
-            {
-                todoList.filter(item => !item.completed).map((item) => {
-                    return <div key={item.id}
-                            className="p-2 bg-light my-2 d-flex justify-content-between"
-                        >
-                        <div className="text-truncate">
-                            <div>ID: {item.id}</div>
-                            <div>Task : {item.title}</div>
-                            <div>Task : {item.completed ? "Completed" : "Pending"}</div>
-                        </div>
-                        <div className="d-flex gap-2 align-items-center">
-                            <FaTrash cursor={'pointer'} className="text-danger" onClick={() => removeTask(item.id)}/>
-                            <FaCheck cursor={'pointer'} className="text-success" onClick={() => handleStatusUpdate(item.id)}/>
-                        </div>
-                    </div>
-                })
-            }
-        </div>
-        <h3 className="my-3">Completed Task - ({todoList.filter(item => item.completed).length})</h3>
-        <div className="w-50 mt-1">
-            {
-                todoList.filter(item => item.completed).map((item) => {
-                    return <div key={item.id}
-                            className="p-2 bg-light my-2 d-flex justify-content-between"
-                        >
-                        <div className="text-truncate">
-                            <div>ID: {item.id}</div>
-                            <div>Task : {item.title}</div>
-                            <div>Task : {item.completed ? "Completed" : "Pending"}</div>
-                        </div>
-                        <div className="d-flex gap-2 align-items-center">
-                            <FaTrash cursor={'pointer'} className="text-danger" onClick={() => removeTask(item.id)}/>
-                        </div>
-                    </div>
-                })
-            }
-        </div>
+        <TodoList todoList={todoList} removeTask={removeTask} handleStatusUpdate={handleStatusUpdate}/>
+        <TodoList todoList={todoList} removeTask={removeTask} handleStatusUpdate={handleStatusUpdate}/>
     </div>
 }
 
