@@ -59,8 +59,8 @@ const TodoPage = () => {
                 className="p-1 w-100 bg-secondary border-0 text-light"
             >Add Task</button>
         </div>
-        <TodoList todoList={todoList} removeTask={removeTask} handleStatusUpdate={handleStatusUpdate}/>
-        <TodoList todoList={todoList} removeTask={removeTask} handleStatusUpdate={handleStatusUpdate}/>
+        <TodoList todoList={todoList} removeTask={removeTask} handleStatusUpdate={handleStatusUpdate} heading={"Pending Task"} completed={false}/>
+        <TodoList todoList={todoList} removeTask={removeTask} handleStatusUpdate={handleStatusUpdate} heading={"Completed Task"} completed={true}/>
     </div>
 }
 
