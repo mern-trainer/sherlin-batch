@@ -1,12 +1,16 @@
 import { Fragment } from "react"
 import { FaCheck, FaTrash } from "react-icons/fa"
+import { useTodo } from "../Providers/TodoProvider"
 
-const TodoList = ({ todoList, removeTask, handleStatusUpdate, heading, completed }) => {
+const TodoList = ({ heading, completed }) => {
+
+    const { todoList, removeTask, handleStatusUpdate } = useTodo()
+
     return <Fragment>
-        <h3 className="text-center mt-3">{ heading } - ({todoList.filter(item => item.completed == completed).length})</h3>
+        <h3 className="text-center mt-3">{ heading } - ({todoList.filter(item => item.completed === completed).length})</h3>
         <div className="w-50 mt-1">
             {
-                todoList.filter(item => item.completed == completed).map((item) => {
+                todoList.filter(item => item.completed === completed).map((item) => {
                     return <div key={item.id}
                             className="p-2 bg-light my-2 d-flex justify-content-between"
                         >
