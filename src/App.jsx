@@ -1,21 +1,24 @@
-import { Toaster } from "react-hot-toast"
-import { CounterProvider } from "./Providers/CounterProvider"
-import TodoPage from "./Pages/TodoPage"
-import { TodoProvider } from "./Providers/TodoProvider"
-import EffectHook from "./Pages/EffectHook"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import A from "./Pages/A"
+import B from "./Pages/B"
 import ShopPage from "./Pages/ShopPage"
+import EcommerceCart from "./Pages/EcommerceCart"
+import TodoPage from "./Pages/TodoPage"
+import LandingPage from "./Pages/LandingPage"
+
+// React Routing
 
 const App = () => {
 
-    return <CounterProvider>
-        {/* <Context /> */}
-        <TodoProvider>
-            {/* <TodoPage /> */}
-            {/* <EffectHook /> */}
-            <ShopPage />
-            <Toaster position="top-right"/>
-       </TodoProvider>
-    </CounterProvider>
+    return <BrowserRouter>
+        <Routes>
+            <Route path="/" Component={LandingPage} />
+            <Route path="/shop" Component={ShopPage} />
+            <Route path="/cart" Component={EcommerceCart} />
+            <Route path="/todo" Component={TodoPage} />
+        </Routes>
+    </BrowserRouter>
+        
 }
 
 export default App
