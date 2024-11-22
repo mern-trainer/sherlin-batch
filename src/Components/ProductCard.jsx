@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react'
 import { FaStar } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 const ProductCard = ({ product, discountPrice, handleAddToCart, cart }) => {
+
+    const navigate = useNavigate()
+
     return <div className='bg-light p-1' style={{ width: "15rem" }}>
-        <div>
+        <div onClick={() => navigate(`/product/${product.id}`)}>
             <img src={product.images[0]} alt={product.title} style={{ aspectRatio: 1 / 1, objectFit: "contain", width: "15rem" }} />
         </div>
         <div>
@@ -31,3 +35,6 @@ const ProductCard = ({ product, discountPrice, handleAddToCart, cart }) => {
 }
 
 export default ProductCard
+
+
+// HomePage, AboutPage, ContactPage

@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import A from "./Pages/A"
-import B from "./Pages/B"
 import ShopPage from "./Pages/ShopPage"
 import EcommerceCart from "./Pages/EcommerceCart"
 import TodoPage from "./Pages/TodoPage"
 import LandingPage from "./Pages/LandingPage"
+import PageNotFound from "./Pages/PageNotFound"
+import SingleProductPage from "./Pages/SingleProductPage"
 
 // React Routing
 
@@ -15,7 +15,9 @@ const App = () => {
             <Route path="/" Component={LandingPage} />
             <Route path="/shop" Component={ShopPage} />
             <Route path="/cart" Component={EcommerceCart} />
+            <Route path="/product/:id?" Component={SingleProductPage} />
             <Route path="/todo" Component={TodoPage} />
+            <Route path="*" Component={PageNotFound} />
         </Routes>
     </BrowserRouter>
         

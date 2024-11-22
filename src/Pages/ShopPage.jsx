@@ -1,7 +1,5 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
-import { FaStar } from 'react-icons/fa'
 import Header from '../Components/Header'
 import { useCart } from '../Providers/CartProvider'
 import ProductCard from '../Components/ProductCard'
@@ -25,13 +23,13 @@ const ShopPage = () => {
     }, [])
 
     const handleAddToCart = (product) => {
-        const index = cartList.findIndex(pdt => pdt.id == product.id)
-        if (index == -1) {
+        const index = cartList.findIndex(pdt => pdt.id === product.id)
+        if (index === -1) {
             product.qty = 1
             return setCartList([...cartList, product])
         }
         const res = cartList.map(pdt => {
-            if (pdt.id == product.id) {
+            if (pdt.id === product.id) {
                 return { ...pdt, qty: pdt.qty + 1 }
             }
             return pdt
